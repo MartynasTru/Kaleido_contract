@@ -37,7 +37,7 @@ contract Ticketing {
    }
 
    function getTicketIDs(uint i) public view returns (uint[] memory) {
-         return ticketHolders[i].ticketIDs; 
+         return ticketHolders;
    }
 
    function createTicket(
