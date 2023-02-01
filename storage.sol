@@ -36,12 +36,8 @@ contract Ticketing {
       createTicket(eventName, eventDate, eventLocation);
    }
 
-   function get() public view returns (uint retVal) {
-      return Ticket.owner;
-   }
-
-   function query() public view returns (uint retVal) {
-      return tickets;
+   function getTicketIDs(uint i) public view returns (uint[] memory) {
+         return ticketHolders[i].ticketIDs; 
    }
 
    function createTicket(
