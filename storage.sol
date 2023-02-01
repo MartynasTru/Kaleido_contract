@@ -59,7 +59,7 @@ contract Ticketing {
       // ticketID = tickets.push(newTicket) - 1;
       // emit TicketCreated(ticketID, eventName, eventDate, eventLocation);
       // return ticketID;
-      }
+      
 
       // Add a new ticket to the tickets array
       // Update the transferCount for the new ticket
