@@ -68,5 +68,8 @@ contract Ticketing {
       // Emit the TicketTransferred event
       // Return true if the transfer was successful
    }
+   function query(uint i) public view returns (uint retVal) {
+      return tickets[i].ticketID;
+   }
 
 }
