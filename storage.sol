@@ -6,7 +6,7 @@ contract Ticketing {
       uint eventDate;
       string eventLocation;
       address owner;
-      uint ticketCount;
+      uint ticketID;
    }
 
    struct TicketHolder {
@@ -32,35 +32,29 @@ contract Ticketing {
       string eventLocation
    );
 
-   constructor(string memory eventName, uint eventDate, string memory eventLocation) public {
-      createTicket(eventName, eventDate, eventLocation);
+   constructor(string memory eventName, uint eventDate, string memory eventLocation, uint ticketID) public {
+      createTicket(eventName, eventDate, eventLocation, ticketID);
    }
 
    function getTicketIDs(uint i) public view returns (uint[] memory) {
-         return ticketHolders;
+         return ticketHolders[i].ticketIDs; 
    }
 
    function createTicket(
       string memory _eventName,
       uint _eventDate,
-      string memory _eventLocation
+      string memory _eventLocation,
+      uint _ticketID
    ) public returns (uint ticketID) {
-      // Ticket memory newTicket = Ticket({
-      //    eventName: _eventName,
-      //    eventDate: _eventDate,
-      //    eventLocation: _eventLocation,
-      //    owner: msg.sender,
-      //    ticketCount: 1
-      //    });
-      // ticketID = tickets.push(newTicket) - 1;
-      // emit TicketCreated(ticketID, eventName, eventDate, eventLocation);
-      // return ticketID;
-      
-
-      // Add a new ticket to the tickets array
-      // Update the transferCount for the new ticket
-      // Emit the TicketCreated event
-      // Return the ID of the new ticket
+      Ticket memory newTicket = Ticket({
+         eventName: _eventName,
+         eventDate: _eventDate,
+         eventLocation: _eventLocation,
+         owner: msg.sender,
+         ticketID: _ticketID
+         });
+      emit TicketCreated(ticketID, _eventName, _eventDate, _eventLocation);
+      return ticketID;
    }
 
    function transferTicket(
@@ -74,4 +68,5 @@ contract Ticketing {
       // Emit the TicketTransferred event
       // Return true if the transfer was successful
    }
+
 }
